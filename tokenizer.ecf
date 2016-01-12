@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <system xmlns="http://www.eiffel.com/developers/xml/configuration-1-15-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-15-0 http://www.eiffel.com/developers/xml/configuration-1-15-0.xsd" name="tokenizer" uuid="08E4CE9D-C067-4FFC-8D0F-A46327598CCE" library_target="tokenizer">
-	<description>Publisher-Subscriber paradigm of inter-object communication.</description>
+	<description>Vaulted Tokenizer</description>
 	<target name="test">
-		<description>Test of Pub-Sub Library</description>
+		<description>Test of Tokenizer Library</description>
 		<root class="ANY" feature="default_create"/>
 		<version major="1" minor="1" release="1" build="1"/>
 		<file_rule>
