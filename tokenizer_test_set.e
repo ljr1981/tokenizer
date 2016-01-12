@@ -36,7 +36,7 @@ feature -- Test routines
 			l_tokenizer: TOKENIZER
 		do
 			create l_tokenizer
-			assert_strings_not_equal ("tokenized", "LARRY", l_tokenizer.tokenize ("LARRY"))
+			assert_strings_not_equal ("tokenized", "LARRY", l_tokenizer.tokenize_alpha_only ("LARRY"))
 		end
 
 end
