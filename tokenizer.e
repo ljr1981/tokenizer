@@ -15,6 +15,10 @@ note
 		
 		(a) the sole responsible party for tokenizing
 		(b) the sole keeper-of-the-keys in changing tokens-to-plain-text
+		
+		This class represents only the tokenizing part of the use-case.
+		The vault, storage of tokens, and token management is a separate
+		matter completely.
 		]"
 	EIS: "src=https://en.wikipedia.org/wiki/Tokenization_(data_security)"
 	EIS: "src=http://www.informationlife.net/considerations-using-tokenization-mask-your-sensitive-data/"
