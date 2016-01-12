@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-12-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-12-0 http://www.eiffel.com/developers/xml/configuration-1-12-0.xsd" name="tokenizer" uuid="08E4CE9D-C067-4FFC-8D0F-A46327598CCE" library_target="tokenizer">
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-15-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-15-0 http://www.eiffel.com/developers/xml/configuration-1-15-0.xsd" name="tokenizer" uuid="08E4CE9D-C067-4FFC-8D0F-A46327598CCE" library_target="tokenizer">
 	<description>Publisher-Subscriber paradigm of inter-object communication.</description>
 	<target name="test">
 		<description>Test of Pub-Sub Library</description>
 		<root class="ANY" feature="default_create"/>
 		<version major="1" minor="1" release="1" build="1"/>
-		<option warning="true" void_safety="transitional" syntax="provisional">
+		<file_rule>
+			<exclude>.git</exclude>
+		</file_rule>
+		<option warning="true" is_obsolete_routine_type="true" void_safety="transitional" syntax="provisional">
 			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
 		</option>
 		<setting name="console_application" value="true"/>
