@@ -37,7 +37,8 @@ note
 class
 	TOKENIZER
 
-feature -- Access
+inherit
+	RANDOMIZER
 
 feature -- Basic Operations
 
@@ -54,120 +55,13 @@ feature -- Basic Operations
 				a_string as ic_string
 			loop
 				if ic_string.item.is_upper then
-					Result.append_character (random_a_to_z_as_upper_with_exception (ic_string.item))
+					Result.append_character (random_a_to_z_upper_with_exceptions (ic_string.item.out))
 				else
-					Result.append_character (random_a_to_z_as_lower_with_exception (ic_string.item))
+					Result.append_character (random_a_to_z_with_exceptions (ic_string.item.out))
 				end
 			end
 		ensure
 			same_size: a_string.count = Result.count
-		end
-
-feature {NONE} -- Implementation
-
-	random_vowel: CHARACTER
-			-- A `random_vowel'.
-		do
-			Result := random_character (alpha_vowels)
-		end
-
-	random_consodent: CHARACTER
-			-- A `random_consodent'.
-		do
-			Result := random_character (alpha_consonents)
-		end
-
-	random_digit: CHARACTER
-			-- A `random_digit'.
-		do
-			Result := random_character (digits)
-		end
-
-	random_digit_with_exception (a_exception: CHARACTER): CHARACTER
-			-- A `random_digit_with_exception' of `a_exception' removed.
-		require
-			in_digits: digits.has (a_exception)
-		do
-			Result := random_character (string_with_exception_removed (digits, a_exception))
-		end
-
-	random_a_to_z_as_upper: CHARACTER
-			-- A `random_a_to_z_as_upper' character.
-		do
-			Result := random_a_to_z_as_lower.as_upper
-		end
-
-	random_a_to_z_as_upper_with_exception (a_exception: CHARACTER): CHARACTER
-			-- A `random_a_to_z_as_upper' character.
-		do
-			Result := random_a_to_z_as_lower_with_exception (a_exception.as_lower).as_upper
-		end
-
-	random_a_to_z_as_lower: CHARACTER
-			-- A `random_a_to_z_as_lower' character.
-		do
-			Result := random_character (alphabet_lower)
-		end
-
-	random_a_to_z_as_lower_with_exception (a_exception: CHARACTER): CHARACTER
-			-- A `random_a_to_z_as_lower' character.
-		do
-			Result := random_character (string_with_exception_removed (alphabet_lower, a_exception.as_lower))
-		end
-
-	random_character (a_string: STRING): CHARACTER
-			-- A `random_character' from `a_string'.
-		do
-			Result := a_string [random_in_range (1 |..| a_string.count)]
-		end
-
-	random_in_range (a_range: INTEGER_INTERVAL): INTEGER
-			-- A `random_in_range' of `a_range'.
-		do
-			Result := new_random \\ (a_range.upper - a_range.lower) + 1 + a_range.lower
-		end
-
-	new_random: INTEGER
-			-- Random integer
-			-- Each call returns another random number.
-		do
-			random_sequence.forth
-			Result := random_sequence.item
-		end
-
-	string_with_exception_removed (a_string: STRING; a_exception: CHARACTER): STRING
-			-- A `string_with_exception_removed'--as in--`a_exception' removed from `a_string'.
-		do
-			Result := a_string.twin
-			Result.replace_substring_all (a_exception.out, "")
-		end
-
-feature -- Constants
-
-	alphabet_lower: STRING = "abcdefghijklmnopqrstuvwxyz"
-
-	alpha_vowels: STRING = "aeiouy"
-
-	alpha_consonents: STRING = "bcdfghjklmnpqrstvwxz"
-
-	digits: STRING = "0123456789"
-
-feature {NONE} -- Implementation
-
-	random_sequence: RANDOM
-			-- Random sequence
-		local
-			l_time: TIME
-			l_seed: INTEGER
-		once
-			-- This computes milliseconds since midnight.
-			-- Milliseconds since 1970 would be even better.
-			create l_time.make_now
-			l_seed := l_time.hour
-			l_seed := l_seed * 60 + l_time.minute
-			l_seed := l_seed * 60 + l_time.second
-			l_seed := l_seed * 1000 + l_time.milli_second
-			create Result.set_seed (l_seed)
 		end
 
 end
