@@ -27,7 +27,7 @@
 		</cluster>
 	</target>
 	<target name="tokenizer" extends="test">
-		<description>Pub-Sub Library</description>
+		<description>Tokenizer Library</description>
 		<root all_classes="true"/>
 		<file_rule>
 			<exclude>tests</exclude>
